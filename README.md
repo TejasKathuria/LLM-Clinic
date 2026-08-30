@@ -11,4 +11,4 @@ Three LLMs, three roles, one hidden case file:
 | **Doctor** | The model under test | Asks questions, orders tests, proposes treatment, and states a final diagnosis |
 | **Judge** | A third LLM | Scores the finished transcript against the hidden case on accuracy, treatment, and efficiency |
  
-Any of the three can be a different model from a different provider. That's the whole point — put Claude-as-doctor and GPT-as-doctor on the *exact same patient* and see who does better.
+Any of the three can be a different model from a different provider. That's the whole point, for example put Claude as doctor and GPT as doctor on the *exact same patient* and see who does better.
