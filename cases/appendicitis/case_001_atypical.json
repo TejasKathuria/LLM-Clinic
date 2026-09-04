@@ -1,0 +1,54 @@
+{
+  "id": "appendicitis_001",
+  "disease_category": "appendicitis",
+  "display_name": "Atypical Appendicitis (Retrocecal)",
+  "difficulty": "hard",
+  "blind_mode_default": true,
+  "max_turns": 10,
+  "patient_profile": {
+    "name": "Patient C",
+    "age": 29,
+    "sex": "F",
+    "occupation": "nurse",
+    "history": ["no significant past medical history", "not pregnant (confirmed on request)"],
+    "presenting_complaint": "vague right flank and lower back discomfort for 2 days, low-grade fever"
+  },
+  "hidden_ground_truth": {
+    "diagnosis": "Acute appendicitis, retrocecal position (atypical presentation, back/flank pain instead of classic RLQ pain)",
+    "stage": "uncomplicated, not yet perforated",
+    "correct_first_line_treatment": "surgical consult for appendectomy; supportive care and IV antibiotics pending surgery",
+    "critical_early_tests": ["CBC with differential", "CT abdomen/pelvis with contrast", "urinalysis to rule out renal cause"],
+    "red_herrings": ["mild pyuria on UA (can mimic UTI due to retrocecal appendix irritating ureter)", "normal McBurney's point exam (misleading because appendix is retrocecal)"]
+  },
+  "symptom_presentation": {
+    "initial": [
+      "vague right flank/back ache, 2 days, gradually worsening",
+      "low grade fever",
+      "mild nausea, no vomiting",
+      "decreased appetite"
+    ],
+    "on_direct_questioning": {
+      "classic_rlq_pain": "absent - patient explicitly denies typical right lower quadrant pain if asked",
+      "psoas_sign": "positive if specifically tested (pain on right hip extension)",
+      "urinary_symptoms": "mild, nonspecific",
+      "menstrual_history": "normal, not pregnant"
+    }
+  },
+  "lab_results": {
+    "vitals": { "temp": "37.9C", "hr": "96 bpm", "bp": "118/76 mmHg" },
+    "cbc": { "wbc": "13.1 x10^9/L (elevated)", "hemoglobin": "normal" },
+    "urinalysis": "trace leukocytes, no nitrites, no significant bacteria (does not fit clean UTI picture)",
+    "ct_abdomen_pelvis": "retrocecal appendix, 9mm diameter, wall thickening and surrounding fat stranding, no perforation or abscess"
+  },
+  "progression_rules": {
+    "if_untreated_or_delayed": "progresses to perforation and peritonitis within 24-48 hours",
+    "if_correct_treatment": "excellent outcome with timely appendectomy",
+    "if_incorrect_or_unnecessary_treatment": "e.g. treating as UTI with oral antibiotics alone and discharging patient delays diagnosis and risks perforation",
+    "if_unnecessary_invasive_test_ordered": "simulate normal/expected result, note added delay in scoring"
+  },
+  "scoring_notes": {
+    "diagnostic_accuracy_weight": 0.45,
+    "treatment_appropriateness_weight": 0.3,
+    "efficiency_safety_weight": 0.25
+  }
+}

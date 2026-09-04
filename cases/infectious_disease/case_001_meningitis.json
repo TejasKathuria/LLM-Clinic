@@ -1,0 +1,68 @@
+{
+  "id": "infectious_disease_001",
+  "disease_category": "infectious_disease",
+  "display_name": "Acute Bacterial Meningitis",
+  "difficulty": "hard",
+  "blind_mode_default": true,
+  "max_turns": 12,
+  "patient_profile": {
+    "name": "Patient E",
+    "age": 22,
+    "sex": "F",
+    "occupation": "college student",
+    "history": [
+      "no major medical conditions",
+      "lives in a college dormitory",
+      "received childhood vaccinations, but missed recent meningococcal booster"
+    ],
+    "presenting_complaint": "severe, throbbing headache, high fever, and stiff neck starting 12 hours ago, with extreme sensitivity to light"
+  },
+  "hidden_ground_truth": {
+    "diagnosis": "Acute Bacterial Meningitis (Neisseria meningitidis)",
+    "stage": "Acute phase, rapidly progressive; patient is at high risk of sepsis, DIC, and neurological injury",
+    "correct_first_line_treatment": "Blood cultures followed immediately by empiric IV antibiotics (Ceftriaxone 2g + Vancomycin 15-20mg/kg) and IV Dexamethasone (10mg) administered prior to or with the first dose of antibiotics. Lumbar puncture should be performed immediately unless there are focal neuro signs warranting a head CT first, but antibiotics must not be delayed for imaging.",
+    "critical_early_tests": ["lumbar puncture (CSF analysis)", "blood cultures", "CBC with differential", "basic metabolic panel (BMP)"],
+    "red_herrings": ["history of a mild head bump 2 days ago (which the patient attributes her headache to initially)"]
+  },
+  "symptom_presentation": {
+    "initial": [
+      "severe headache, rated 10/10, constant, worse with any movement",
+      "high fever and chills",
+      "neck stiffness and discomfort when trying to bend neck",
+      "extreme light sensitivity (photophobia)"
+    ],
+    "on_direct_questioning": {
+      "head_bump": "I bumped my head on a shelf 2 days ago. It left a tiny bruise but didn't hurt much. This headache is completely different, like my head is going to explode.",
+      "focal_weakness": "No weakness in my arms or legs, and no numbness.",
+      "rash": "I think I saw a few small purple spots on my legs this morning, but I thought they were just minor bruises.",
+      "kernig_sign": "positive (pain and resistance when extending the knee with hip flexed)",
+      "brudzinski_sign": "positive (flexing the neck causes the patient to flex her knees and hips)"
+    }
+  },
+  "lab_results": {
+    "vitals": { "temp": "39.4C", "hr": "112 bpm", "bp": "110/68 mmHg", "rr": "22/min", "spo2": "97% on room air" },
+    "cbc": { "wbc": "18.9 x10^9/L (elevated, 90% neutrophils)", "hemoglobin": "13.2 g/dL (normal)", "platelets": "145 x10^9/L (normal)" },
+    "bmp": { "sodium": "134 mEq/L (mildly low)", "potassium": "3.8 mEq/L", "creatinine": "0.8 mg/dL" },
+    "csf_analysis": {
+      "opening_pressure": "280 mm H2O (elevated)",
+      "appearance": "cloudy and turbid",
+      "glucose": "18 mg/dL (very low; blood glucose is 100 mg/dL)",
+      "protein": "185 mg/dL (elevated)",
+      "wbc": "2,400 cells/uL (92% neutrophils)",
+      "gram_stain": "Gram-negative diplococci (suggestive of Neisseria meningitidis)"
+    },
+    "blood_cultures": "pending (later grows Neisseria meningitidis)",
+    "ct_head": "no midline shift, no mass effect, no evidence of increased intracranial pressure contraindicating lumbar puncture"
+  },
+  "progression_rules": {
+    "if_untreated_or_delayed": "progresses rapidly to altered mental status, seizures, purpura fulminans, septic shock, or death within hours",
+    "if_correct_treatment": "systemic symptoms and headache gradually improve over 24-48 hours with appropriate IV antibiotics",
+    "if_incorrect_or_unnecessary_treatment": "e.g. treating as migraine or concussion, or holding antibiotics to wait for head CT / CSF culture results, delays life-saving therapy and results in clinical deterioration",
+    "if_unnecessary_invasive_test_ordered": "simulate normal/expected result, note added delay in scoring"
+  },
+  "scoring_notes": {
+    "diagnostic_accuracy_weight": 0.35,
+    "treatment_appropriateness_weight": 0.4,
+    "efficiency_safety_weight": 0.25
+  }
+}

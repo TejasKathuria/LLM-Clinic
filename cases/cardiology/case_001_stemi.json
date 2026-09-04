@@ -1,0 +1,60 @@
+{
+  "id": "cardiology_001",
+  "disease_category": "cardiology",
+  "display_name": "Acute ST-Elevation Myocardial Infarction (STEMI)",
+  "difficulty": "medium",
+  "blind_mode_default": true,
+  "max_turns": 10,
+  "patient_profile": {
+    "name": "Patient D",
+    "age": 58,
+    "sex": "M",
+    "occupation": "construction manager",
+    "history": [
+      "25 pack-year smoking history, active smoker",
+      "hyperlipidemia, non-compliant with atorvastatin",
+      "family history of early coronary artery disease (father had MI at 52)"
+    ],
+    "presenting_complaint": "sudden onset of crushing substernal chest pain for 2 hours, radiating to the left shoulder and jaw, accompanied by sweating and shortness of breath"
+  },
+  "hidden_ground_truth": {
+    "diagnosis": "Acute Anterior Wall ST-Elevation Myocardial Infarction (STEMI)",
+    "stage": "Hyperacute phase, hemodynamically stable but high risk of arrhythmia/shock",
+    "correct_first_line_treatment": "Immediate aspirin (324mg chewed), P2Y12 inhibitor (e.g. clopidogrel or ticagrelor), anticoagulation (heparin), and urgent activation of cardiac catheterization lab for Percutaneous Coronary Intervention (PCI)",
+    "critical_early_tests": ["12-lead electrocardiogram (ECG/EKG)", "cardiac troponin", "basic metabolic panel (BMP)", "CBC"],
+    "red_herrings": ["mild epigastric burning (patient attributes pain to recent spicy lunch, which is a classic patient distraction)"]
+  },
+  "symptom_presentation": {
+    "initial": [
+      "severe substernal chest pain, described as 'an elephant sitting on my chest', radiating to left shoulder and arm",
+      "marked diaphoresis (sweating)",
+      "shortness of breath",
+      "mild nausea"
+    ],
+    "on_direct_questioning": {
+      "pain_reproducibility": "pain is constant, not reproducible by chest wall palpation, and not relieved by changing positions",
+      "epigastric_burning": "yes, feels a bit like bad heartburn as well, patient thinks it might be from the tacos he had for lunch",
+      "recreational_drugs": "denies any cocaine or other stimulant use"
+    }
+  },
+  "lab_results": {
+    "vitals": { "temp": "36.8C", "hr": "94 bpm", "bp": "142/88 mmHg", "rr": "20/min", "spo2": "95% on room air" },
+    "ecg": "ST-segment elevations of 3mm in leads V1-V4, with reciprocal ST-segment depressions in leads II, III, and aVF (diagnostic of acute anterior STEMI)",
+    "ekg": "ST-segment elevations of 3mm in leads V1-V4, with reciprocal ST-segment depressions in leads II, III, and aVF (diagnostic of acute anterior STEMI)",
+    "troponin": "0.45 ng/mL (elevated; normal is < 0.04 ng/mL)",
+    "cbc": { "wbc": "9.2 x10^9/L (normal)", "hemoglobin": "14.8 g/dL (normal)" },
+    "bmp": { "sodium": "138 mEq/L", "potassium": "4.1 mEq/L", "creatinine": "0.9 mg/dL" },
+    "chest_xray": "normal heart size, clear lung fields, no signs of acute congestion or aortic dissection"
+  },
+  "progression_rules": {
+    "if_untreated_or_delayed": "progresses rapidly to ventricular fibrillation, cardiogenic shock, or irreversible myocardial necrosis within hours if reperfusion is delayed",
+    "if_correct_treatment": "rapid resolution of chest pain, stabilization of ECG changes post-PCI, and good long-term ventricular function preservation",
+    "if_incorrect_or_unnecessary_treatment": "e.g. administering antacids or PPIs for suspected GERD, or delaying PCI to wait for serial troponin results, worsens cardiac damage and risks fatal arrhythmia",
+    "if_unnecessary_invasive_test_ordered": "simulate normal/expected result, note added delay in scoring"
+  },
+  "scoring_notes": {
+    "diagnostic_accuracy_weight": 0.35,
+    "treatment_appropriateness_weight": 0.4,
+    "efficiency_safety_weight": 0.25
+  }
+}

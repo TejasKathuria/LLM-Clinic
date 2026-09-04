@@ -1,0 +1,61 @@
+{
+  "id": "lung_cancer_001",
+  "disease_category": "lung_cancer",
+  "display_name": "Non-Small Cell Lung Cancer — Early Stage",
+  "difficulty": "medium",
+  "blind_mode_default": true,
+  "max_turns": 12,
+  "patient_profile": {
+    "name": "Patient A",
+    "age": 61,
+    "sex": "F",
+    "occupation": "retired teacher",
+    "history": [
+      "30 pack-year smoking history, quit 5 years ago",
+      "mild hypertension, controlled with lisinopril",
+      "no prior cancer history"
+    ],
+    "presenting_complaint": "persistent cough for 6 weeks, mild unexplained weight loss, occasional blood-tinged sputum"
+  },
+  "hidden_ground_truth": {
+    "diagnosis": "Non-Small Cell Lung Cancer (adenocarcinoma)",
+    "stage": "Stage IB",
+    "correct_first_line_treatment": "surgical resection (lobectomy) with consideration of adjuvant chemotherapy",
+    "critical_early_tests": ["chest x-ray", "chest CT with contrast", "tissue biopsy", "PET scan for staging"],
+    "red_herrings": ["mild anemia (chronic, unrelated)", "elevated CRP (from recent minor cold)"]
+  },
+  "symptom_presentation": {
+    "initial": [
+      "persistent dry-to-productive cough, 6 weeks",
+      "fatigue",
+      "unintentional 4kg weight loss over 2 months",
+      "occasional streaks of blood in sputum"
+    ],
+    "on_direct_questioning": {
+      "chest_pain": "mild, dull, left-sided, worse with deep breath",
+      "shortness_of_breath": "mild on exertion only",
+      "fever": "none",
+      "night_sweats": "none",
+      "family_history": "father had colon cancer at 70"
+    }
+  },
+  "lab_results": {
+    "cbc": { "hemoglobin": "11.2 g/dL (mild anemia)", "wbc": "7.8 x10^9/L (normal)", "platelets": "normal" },
+    "crp": "18 mg/L (mildly elevated)",
+    "chest_xray": "2.8cm nodule, left upper lobe, irregular margins",
+    "chest_ct": "2.9cm spiculated mass, left upper lobe, no obvious mediastinal lymphadenopathy",
+    "biopsy": "adenocarcinoma, moderately differentiated",
+    "pet_scan": "focal uptake confined to primary lesion, no distant or nodal uptake"
+  },
+  "progression_rules": {
+    "if_untreated_or_delayed": "tumor slowly progresses; risk of upstaging to Stage II-III over months if resection delayed significantly",
+    "if_correct_treatment": "good prognosis, high probability of cure after resection",
+    "if_incorrect_or_unnecessary_treatment": "e.g. starting chemo without tissue diagnosis, or treating as infection with antibiotics alone, delays correct care and the nodule persists/grows on any follow-up imaging",
+    "if_unnecessary_invasive_test_ordered": "note the added cost/risk in scoring, but simulate a normal/expected incidental result"
+  },
+  "scoring_notes": {
+    "diagnostic_accuracy_weight": 0.4,
+    "treatment_appropriateness_weight": 0.35,
+    "efficiency_safety_weight": 0.25
+  }
+}

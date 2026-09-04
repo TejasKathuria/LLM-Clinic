@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #f6f3ec;
+  --ink: #0e1a17;
+  --chart: #1f6f5c;
+  --pulse: #e0563a;
+  --vitals: #2f7cb8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 27px,
+      rgba(14, 26, 23, 0.045) 28px
+    );
+  background-size: 100% 28px;
+}
+
+.chart-rule {
+  border-top: 1px dashed rgba(14, 26, 23, 0.25);
+}
+
+.ekg-divider {
+  height: 18px;
+  width: 100%;
+  background-repeat: repeat-x;
+  background-size: 64px 18px;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='18' viewBox='0 0 64 18'%3E%3Cpath d='M0 9 L18 9 L22 2 L26 16 L30 9 L64 9' fill='none' stroke='%231f6f5c' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--pulse);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--vitals);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "sepsis_001",
+  "disease_category": "sepsis",
+  "display_name": "Sepsis Secondary to Urinary Tract Infection",
+  "difficulty": "easy",
+  "blind_mode_default": true,
+  "max_turns": 10,
+  "patient_profile": {
+    "name": "Patient B",
+    "age": 74,
+    "sex": "M",
+    "occupation": "retired",
+    "history": [
+      "type 2 diabetes",
+      "benign prostatic hyperplasia",
+      "lives alone"
+    ],
+    "presenting_complaint": "brought in confused, fever, and weakness for 1 day"
+  },
+  "hidden_ground_truth": {
+    "diagnosis": "Sepsis secondary to urosepsis (E. coli UTI)",
+    "stage": "Sepsis (SOFA-positive), not yet septic shock",
+    "correct_first_line_treatment": "IV fluids, blood cultures + urine culture BEFORE antibiotics, empiric broad-spectrum IV antibiotics within 1 hour, monitor lactate",
+    "critical_early_tests": ["lactate", "blood cultures", "urinalysis + urine culture", "CBC", "basic metabolic panel"],
+    "red_herrings": ["mild dehydration framed as sole cause of confusion"]
+  },
+  "symptom_presentation": {
+    "initial": [
+      "confusion, new onset over 24 hours",
+      "fever, subjective chills",
+      "generalized weakness",
+      "decreased urine output"
+    ],
+    "on_direct_questioning": {
+      "urinary_symptoms": "dysuria and urgency for 3 days prior, patient forgot to mention initially",
+      "abdominal_pain": "mild suprapubic tenderness",
+      "cough": "none",
+      "rash": "none"
+    }
+  },
+  "lab_results": {
+    "vitals": { "temp": "38.9C", "hr": "118 bpm", "bp": "94/58 mmHg", "rr": "24/min", "spo2": "94% on room air" },
+    "lactate": "3.2 mmol/L (elevated)",
+    "cbc": { "wbc": "16.4 x10^9/L (elevated, left shift)", "hemoglobin": "normal", "platelets": "normal" },
+    "urinalysis": "positive leukocyte esterase, positive nitrites, many bacteria",
+    "blood_cultures": "pending at time of initial workup, later grows E. coli",
+    "renal_function": "creatinine mildly elevated from baseline (acute kidney injury, likely prerenal)"
+  },
+  "progression_rules": {
+    "if_untreated_or_delayed": "progresses to septic shock (hypotension refractory to fluids, worsening lactate, organ dysfunction) within hours",
+    "if_correct_treatment": "rapid stabilization within 24-48 hours with fluids + appropriate antibiotics + source control",
+    "if_incorrect_or_unnecessary_treatment": "e.g. antibiotics delayed for imaging, or narrow-spectrum antibiotic chosen empirically before culture data, worsens trajectory",
+    "if_unnecessary_invasive_test_ordered": "simulate normal/expected result, note added delay in scoring"
+  },
+  "scoring_notes": {
+    "diagnostic_accuracy_weight": 0.3,
+    "treatment_appropriateness_weight": 0.4,
+    "efficiency_safety_weight": 0.3
+  }
+}

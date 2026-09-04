@@ -1,0 +1,62 @@
+{
+  "id": "pediatrics_001",
+  "disease_category": "pediatrics",
+  "display_name": "Pediatric Croup (Laryngotracheobronchitis)",
+  "difficulty": "easy",
+  "blind_mode_default": true,
+  "max_turns": 10,
+  "patient_profile": {
+    "name": "Patient F (represented by mother)",
+    "age": 2,
+    "sex": "M",
+    "occupation": "none (toddler)",
+    "history": [
+      "born full term, no history of asthma or reactive airway disease",
+      "up to date on all childhood vaccinations"
+    ],
+    "presenting_complaint": "sudden onset of a loud 'barking' cough, hoarse cry, and a squeaking sound when breathing in that started 4 hours ago"
+  },
+  "hidden_ground_truth": {
+    "diagnosis": "Croup (Laryngotracheobronchitis) of moderate severity",
+    "stage": "Moderate croup (stridor at rest with mild chest retractions, but no respiratory distress/hypoxia)",
+    "correct_first_line_treatment": "Single dose of oral or intramuscular dexamethasone (0.6 mg/kg). If stridor at rest is persistent or severe, nebulized racemic epinephrine should be given. Keep the child calm to avoid worsening airway obstruction.",
+    "critical_early_tests": ["clinical assessment of croup severity (e.g. Westley Croup Score)", "pulse oximetry"],
+    "red_herrings": ["mother mentions he was playing with small Lego blocks earlier today, raising concern for foreign body inhalation (though the classic prodrome and barky cough point strongly to croup)"]
+  },
+  "symptom_presentation": {
+    "initial": [
+      "loud 'seal-like' barking cough that woke him up from sleep",
+      "hoarse voice and hoarse cry",
+      "squeaking noise when breathing in (inspiratory stridor), especially when crying or agitated",
+      "mild runny nose and low-grade fever for the last 2 days"
+    ],
+    "on_direct_questioning": {
+      "choking_episode": "No, I didn't see him choke or gasp suddenly while playing with the Legos. He had a runny nose for two days before this barking cough started tonight.",
+      "drooling_or_swallowing": "No, he is not drooling. He was able to swallow water and juice without any trouble earlier this evening.",
+      "color_change": "No, his face and lips have stayed their normal pink color, he doesn't look blue or pale."
+    }
+  },
+  "lab_results": {
+    "vitals": { "temp": "38.2C", "hr": "124 bpm", "bp": "94/58 mmHg", "rr": "32/min", "spo2": "96% on room air" },
+    "physical_exam": {
+      "general": "Alert, sitting on mother's lap, looks mildly anxious, breathing through mouth",
+      "throat": "mildly red, no swelling of the tonsils, no drooling",
+      "respiratory": "audible inspiratory stridor at rest, mild subcostal and intercostal retractions, lungs otherwise clear with equal breath sounds, no wheezing or rales",
+      "skin": "no cyanosis, warm and well perfused"
+    },
+    "pulse_oximetry": "96% on room air",
+    "neck_xray": "AP view of neck shows symmetric subglottic narrowing, also known as the 'steeple sign'; lateral view shows a normal-appearing epiglottis",
+    "cbc": { "wbc": "8.5 x10^9/L (normal)", "hemoglobin": "12.0 g/dL (normal)" }
+  },
+  "progression_rules": {
+    "if_untreated_or_delayed": "airway swelling can worsen, leading to increased work of breathing, severe retractions, fatigue, and potential hypoxia requiring intensive monitoring",
+    "if_correct_treatment": "rapid clinical improvement with resolution of stridor at rest and decreased work of breathing within 1-2 hours after corticosteroids/epinephrine",
+    "if_incorrect_or_unnecessary_treatment": "e.g. attempting to start an IV or draw blood unnecessarily causes significant agitation and distress, which physically worsens subglottic narrowing and stridor; antibiotics are useless because croup is viral",
+    "if_unnecessary_invasive_test_ordered": "note the added distress/agitation to the child in the scoring, and simulate normal results"
+  },
+  "scoring_notes": {
+    "diagnostic_accuracy_weight": 0.3,
+    "treatment_appropriateness_weight": 0.4,
+    "efficiency_safety_weight": 0.3
+  }
+}
