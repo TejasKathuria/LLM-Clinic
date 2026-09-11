@@ -1,4 +1,4 @@
-# LLM Clinic: Diagnostic Benchmark Arena
+# LLM Clinic
 
 An open evaluation framework for benchmarking large language models on interactive clinical diagnosis and management. Models interview a deterministic patient simulation, order diagnostic tests, and establish differential diagnoses under identical constraints.
 
